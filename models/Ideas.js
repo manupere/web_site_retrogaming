@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+
 
 //Mise en place du Schema
-const IdeaSchema = mongoose.Schema({
+const IdeaSchema = new mongoose.Schema({
     title:{
         type: String,
         trim: true,
