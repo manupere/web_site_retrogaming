@@ -11,9 +11,9 @@ const passport = require('passport');
 const path = require('path');
 const mysql= require('mysql');
 // Chargement de mes routes
-const ideas = require('./routes/ideas');
-const users = require('./routes/users');
-const news = require('./routes/NewsController')
+const ideas_router = require('./routes/ideas');
+const users_router = require('./routes/users');
+const news_router = require('./routes/NewsController')
 
 //NEWS API
 const NewsAPI = require('newsapi')
@@ -25,7 +25,7 @@ require('./config/passport')(passport);
 
 
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 //Connexion à la base de données
 mongoose.Promise = global.Promise
@@ -38,7 +38,7 @@ mongoose.connect('mongodb://localhost/NextForVideoApp', {
 
 //setHeader
 app.use(function (req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5000'); 
+    res.setHeader('Access-Control-Allow-Origin', '*'); 
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Accept');
     res.setHeader('Access-Control-Allow-Credentials', true);
@@ -156,9 +156,9 @@ app.get('/explosionDuRetroGaming', (req, res)=> {
 });
 
 //Utilisation des routes
-app.use('/ideas', ideas);
-app.use('/users', users);
-app.use('/news', news)
+app.use('/ideas', ideas_router);
+app.use('/users', users_router);
+app.use('/news', news_router)
 
 app.listen(port, () => {
     console.log(`Serveur sur le port ${port}`);
