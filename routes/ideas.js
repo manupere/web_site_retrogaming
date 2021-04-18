@@ -17,8 +17,7 @@ router.get('/add', ensureAuthenticated, (req, res) => {
 
 //traitement du formulaire
 router.post('/', ensureAuthenticated, (req, res)=> {
-   // console.log(req.body);
-   // res.send('ok');
+   
 
    let errors = [];
 
@@ -35,18 +34,19 @@ router.post('/', ensureAuthenticated, (req, res)=> {
           title: req.body.title,
           details: req.body.details 
        });
+       
 
     
        console.log(errors);
    } else { 
       // res.send('passed');
-      const newUser = {
+      const newVideoGameArticle = {
           title: req.body.title,
           details: req.body.details,
           user: req.user.id
       }
      // console.log(newUser.user);
-      new Idea(newUser)
+      new Idea(newVideoGameArticle)
               .save()
               .then(idea => {
                   //message flash pour l'ajout
@@ -60,6 +60,7 @@ router.get('/', ensureAuthenticated, (req, res)=> {
     Idea.find({ user: req.user.id })
           .sort({date: 'desc'})
           .then(ideas => {
+              console.log(ideas)
               res.render('ideas/index', {
                   ideas: ideas
               });
@@ -107,9 +108,21 @@ router.delete('/:id', ensureAuthenticated, (req, res)=> {
     Idea.remove({ _id: req.params.id})
          .then(()=>{
              //pour le message d'info 
-             req.flash('success_msg', 'Article supprimé');
-             res.redirect('/ideas');
+             req.flash('success_msg', 'Article supprimé')
+             res.redirect('/ideas')
          })
 });
 
-module.exports = router ;
+// show idea 
+router.get('/:id', ensureAuthenticated, (req, res)=> {
+    Idea.findOne({
+        _id: req.params.id
+    })
+    .then(idea => {
+    // res.send(idea)
+    res.render('./ideas/show' , {article:idea})
+    })
+   
+})
+
+module.exports = router
