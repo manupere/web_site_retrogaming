@@ -130,6 +130,7 @@ app.get('/carrousel_secondaire', (req, res ) => {
             images =  ["atariImageSportBasketball5.jpg", "atariImagePlateformeHero4.jpg", "atariImageCombatChopper-Command5.jpg", "atari4.jpg", "atari5.jpg"]
             break
         case "combat":
+            //article.find()
             images = ["atariImageCombatChopper-Command5.jpg", "atariImageSportBasketball5.jpg", "atariImageCombatChopper-Command5.jpg", "atariImageCombatChopper-Command5.jpg", "15.jpg"]
             break
         case "sport":
