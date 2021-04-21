@@ -108,8 +108,8 @@ router.delete('/:id', ensureAuthenticated, (req, res)=> {
     Idea.remove({ _id: req.params.id})
          .then(()=>{
              //pour le message d'info 
-             req.flash('success_msg', 'Article supprimé');
-             res.redirect('/ideas');
+             req.flash('success_msg', 'Article supprimé')
+             res.redirect('/ideas')
          })
 });
 
@@ -123,6 +123,9 @@ router.get('/:id', ensureAuthenticated, (req, res)=> {
     res.render('./ideas/show' , {article:idea})
     })
    
-});
+ 
+})
 
-module.exports = router ;
+module.exports = router 
+
+
