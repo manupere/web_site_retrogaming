@@ -14,6 +14,7 @@ const mysql= require('mysql');
 const ideas_router = require('./routes/ideas');
 const users_router = require('./routes/users');
 const news_router = require('./routes/NewsController')
+var helmet = require('helmet');
 
 //NEWS API
 const NewsAPI = require('newsapi')
@@ -155,6 +156,9 @@ app.get('/explosionDuRetroGaming', (req, res)=> {
     res.render('explosionDuRetroGaming');
 });
 
+//Utilisation du pack de sécurité HELMET
+app.use(helmet());
+
 //Utilisation des routes
 app.use('/ideas', ideas_router);
 app.use('/users', users_router);
@@ -163,3 +167,5 @@ app.use('/news', news_router)
 app.listen(port, () => {
     console.log(`Serveur sur le port ${port}`);
 });
+
+module.exports = app;
