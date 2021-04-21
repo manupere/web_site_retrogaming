@@ -4,43 +4,36 @@
  </div>
 
 
-<div class="container d-flex  flex-wrap ">
+<div class="container">
+     <div class="row">
+         
 
 {{#each ideas}}
 
-
-<div class="card mr-3 text-center bg-info mb-4 mt-4" style=" height:300px; width:260px; margin-bottom:20px" >
-     
-      <div class="card-body bg-dark text-light "> 
-
-                    <div>
-                               <h6></br>{{title}}</h6> 
-                           <h6 class="pb-3">{{details}}</h6> 
-                              <a href="#" class="text-light bg-success rounded-circle p-2">LIRE L'ARTICLE COMPLET</a>
-
+          <div class="col-3">
+               <div class="card mb-2">
+                    <img src="/images/imagesAtari/atariImagePlateformeDigDug2.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                         <h5 class="card-title">{{title}}</h5>
+                         <p class="card-text">{{details}}</p>
+                         <a href="/ideas/{{_id}}" class="btn btn-primary">Lire la suite</a>
+                              <a href="/ideas/edit/{{id}}" class="btn btn-secondary  btn-sm " >Editez</a>
+                              
+                              <form method="POST" action="/ideas/{{id}}?_method=DELETE">
+                                   
+                                   <input type="hidden" name="_method" value="DELETE">
+                                   <input type="submit" class="btn btn-danger btn-sm" value="supprimez">
+                                   <a type="button" class="btn btn-secondary btn-sm" href="/">Quitter</a>
+                              </form>
                     </div>
-                              <img class="card-img-top mb-4" src="/images/imagesAtari/atariImagePlateformeDigDug2.jpg" alt="Jeux Atari space invader">
-                              {{!-- <a class="bg-dark text-light">{{date}}</a> --}}
-    
-    
-                    {{!-- <h6 class="card-subtitle mb-2 text-muted"></h6> --}}
-  
-                   
-
-               <form method="POST" action="/ideas/{{id}}?_method=DELETE">
-                <a href="/ideas/edit/{{id}}" class="btn btn-secondary  btn-sm " >Editez</a>
-                    <input type="hidden" name="_method" value="DELETE">
-                    <input type="submit" class="btn btn-danger btn-sm" value="supprimez">
-                    <a type="button" class="btn btn-secondary btn-sm" href="/">Quitter</a>
-               </form>
+               </div>
           </div>
-     </div>
+     
 
+{{else}}
 
+     <p>Aucun articles publiés </p>
 
-               {{else}}
-
-                    <p>Aucun articles publiés </p>
-
-               {{/each}}
+{{/each}}
+</div>
 </div>

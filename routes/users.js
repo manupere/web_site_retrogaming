@@ -5,23 +5,23 @@ const passport = require('passport');
 const router = express.Router();
 
 
-//Chargement du model
+//Download model Users
 require('../models/Users');
 const User = mongoose.model('users');
 
 
-//User Login Route
+// Method GET  Login user
 router.get('/login', (req, res)=> {
     res.render('users/login');
 });
 
-// User register Route
+// Method GET  register user
 router.get('/register', (req, res)=> {
     res.render('users/register');
 });
 
 
-//Register formulaire POST
+// Method POST register form
 router.post('/register', (req, res)=> 
 {
       
@@ -78,7 +78,7 @@ router.post('/register', (req, res)=>
     }
 } );
 
-//Login formulaire POST
+// Method POST login user
 router.post('/login', (req, res, next)=> {
     passport.authenticate('local', {
         successRedirect:'/ideas',
@@ -87,7 +87,7 @@ router.post('/login', (req, res, next)=> {
     })(req, res, next);
 
 });
-
+ // Method GET logout user
 router.get('/logout', (req, res)=> {
     req.logout();
     req.flash('success_msg', 'Vous êtes à présent déconnecté');

@@ -123,6 +123,9 @@ router.get('/:id', ensureAuthenticated, (req, res)=> {
     res.render('./ideas/show' , {article:idea})
     })
    
+ 
 })
 
-module.exports = router
+module.exports = router 
+
+
