@@ -163,3 +163,5 @@ app.use('/news', news_router)
 app.listen(port, () => {
     console.log(`Serveur sur le port ${port}`);
 });
+
+module.exports = app;
