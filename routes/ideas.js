@@ -43,7 +43,8 @@ router.post('/', ensureAuthenticated, (req, res)=> {
       const newVideoGameArticle = {
           title: req.body.title,
           details: req.body.details,
-          user: req.user.id
+          user: req.user.id,
+          annee_sortie: req.body.annee_sortie
       }
      // console.log(newUser.user);
       new Idea(newVideoGameArticle)
