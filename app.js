@@ -91,24 +91,7 @@ app.use(session({
 
 //Index
 app.get('/', (req, res) => {
-    newsapi.v2.everything({
-        //sources: 'bbc-news,the-verge',
-        q: 'retro-gaming',
-        //category: 'entertainment',
-        language: 'fr',
-        //country: 'us'
-      }).then(response => {
-        console.log(response.articles[0].title)
-        let articles = response.articles
-        for (let i = 0; i < 4; ++i) {
-            if (i == 0) {
-                articles[i].first = true
-            } else {
-                articles[i].first = false
-            }
-        }
-        res.render('acceuil', {topNews: articles.slice(0, 4), minorNews: articles.slice(4, 8)})
-    })
+    res.render("acceuil" )
 })
 
 
@@ -159,7 +142,7 @@ app.get('/explosionDuRetroGaming', (req, res)=> {
 //Utilisation des routes
 app.use('/ideas', ideas_router);
 app.use('/users', users_router);
-app.use('/news', news_router)
+// app.use('/news', news_router)
 
 app.listen(port, () => {
     console.log(`Serveur sur le port ${port}`);

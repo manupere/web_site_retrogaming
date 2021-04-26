@@ -35,11 +35,10 @@ router.post('/', ensureAuthenticated, (req, res)=> {
           details: req.body.details 
        });
        
-
     
        console.log(errors);
    } else { 
-      // res.send('passed');
+      
       const newVideoGameArticle = {
           title: req.body.title,
           details: req.body.details,
@@ -56,12 +55,12 @@ router.post('/', ensureAuthenticated, (req, res)=> {
               })
    }
 });
-
+          // print  all Articles
 router.get('/', ensureAuthenticated, (req, res)=> {
     Idea.find({ user: req.user.id })
           .sort({date: 'desc'})
           .then(ideas => {
-              console.log(ideas)
+              console.log("tests", ideas)
               res.render('ideas/index', {
                   ideas: ideas
               });

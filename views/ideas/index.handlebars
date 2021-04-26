@@ -1,6 +1,6 @@
   <div class="container mx-auto ">
  
-      <h4 class=" text-center mx-auto bg-dark text-light rounded-circle w-25  "> VOS PUBLICATIONS </h4>
+      <h4 class=" text-center mx-auto bg-dark text-light rounded-circle w-25 p-3 "> VOS PUBLICATIONS </h4>
  </div>
 
 
@@ -10,14 +10,15 @@
 
 {{#each ideas}}
 
-          <div class="col-3">
+          <div class="col-sm-12 col-md-6 col-lg-3">
                <div class="card mb-2">
                     <img src="/images/imagesAtari/atariImagePlateformeDigDug2.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
+                    <div class="card-body scrolling"> 
                          <h5 class="card-title">{{title}}</h5>
                          <p class="card-text">{{details}}</p>
-                         <a href="/ideas/{{_id}}" class="btn btn-primary">Lire la suite</a>
-                              <a href="/ideas/edit/{{_id}}" class="btn btn-secondary  btn-sm " >Editez</a>
+                          </div>
+                         <a  type="button" href="/ideas/{{_id}}" class="btn btn-primary btn-sm">Lire la suite</a>
+                              <a  type="button" href="/ideas/edit/{{_id}}" class="btn btn-secondary btn-sm" >Editez</a>
                               
                               <form method="POST" action="/ideas/{{id}}?_method=DELETE">
                                    
@@ -25,7 +26,7 @@
                                    <input type="submit" class="btn btn-danger btn-sm" value="supprimez">
                                    <a type="button" class="btn btn-secondary btn-sm" href="/">Quitter</a>
                               </form>
-                    </div>
+                   
                </div>
           </div>
      

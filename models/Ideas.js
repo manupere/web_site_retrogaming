@@ -22,7 +22,12 @@ const IdeaSchema = new mongoose.Schema({
     date:{
         type: Date,
         default: Date.now
+    },
+    picture: {
+        type:String,
+        trim:true
     }
+
 });
 
 mongoose.model('ideas', IdeaSchema);

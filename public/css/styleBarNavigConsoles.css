@@ -23,7 +23,7 @@ ul,li {border-radius: 20px;}
      }
 .containerEditIdeas{ max-width:400px;}
 
-body {background-image :url('/images/imageFondEcran/montagneSonic.jpg'); background-size:cover; margin:auto; max-width:1900px;}
+body {background-image :url('/images/imageFondEcran/montagneSonic.jpg'); background-size:cover no-repeat; margin:auto; max-width:1900px;}
 
 
 
